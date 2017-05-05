@@ -1,0 +1,17 @@
+{
+  "name": "greetings-webapp",
+  "version": "1.0.0",
+  "description": "Allows a user to greet different people using a HTTP GET route.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
+}
