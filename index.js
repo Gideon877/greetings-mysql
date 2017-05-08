@@ -1,5 +1,18 @@
 var express = require('express');
+var exphbs  = require('express-handlebars');
+
 var app = express();
+var handlebars = require('handlebars');
+app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+app.set('view engine', 'handlebars');
+
+// app.get('/', function (req, res) {
+//     res.render('home');
+// });
+//
+// app.listen(3000);
+
+app.use(express.static('public'))
 var namesGreeted = [];
 
 app.get('/greetings/:name', function(req, res) {
@@ -14,16 +27,16 @@ app.get('/greeted/', function(req, res) {
     res.send(namesGreeted);
 
 });
-
 app.get('/counter/:checkName', function(req, res) {
+
     var checkName = req.params.checkName;
     var occurences = {};
     for (var index = 0; index < namesGreeted.length; index++) {
         var value = namesGreeted[index];
         occurences[value] = occurences[value] ? occurences[value] + 1 : 1;
     }
-    console.log(occurences);
-    res.send(occurences);
+    console.log(occurences[checkName]);
+    res.sendStatus(checkName + " is greeted " + occurences[checkName] + " time(s)");
 })
 
 
