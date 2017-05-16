@@ -6,12 +6,24 @@
   "scripts": {
     "test": "mocha"
   },
-  "author": "",
+  "author": "Thabang G. Magaola",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.15.2"
+    "body": "^5.1.0",
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "express-handlebars": "^3.0.0",
+    "mongoose": "^4.9.8"
   },
   "devDependencies": {
     "nodemon": "^1.11.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gideon877/greetings-webapp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Gideon877/greetings-webapp/issues"
+  },
+  "homepage": "https://github.com/Gideon877/greetings-webapp#readme"
 }

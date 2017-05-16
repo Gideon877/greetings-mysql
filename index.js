@@ -1,50 +1,34 @@
-var express = require('express');
-var exphbs  = require('express-handlebars');
+const express = require('express');
+const exphbs = require('express-handlebars');
+const bodyParser = require('body-parser');
 
-var app = express();
-var handlebars = require('handlebars');
+const NameRoutes = require('./greet');
+const nameRoutes = NameRoutes();
+const app = express();
+
+
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
-// app.get('/', function (req, res) {
-//     res.render('home');
-// });
-//
-// app.listen(3000);
-
-app.use(express.static('public'))
-var namesGreeted = [];
-
-app.get('/greetings/:name', function(req, res) {
-    var name = req.params.name;
-    res.send("Hello, " + name);
-    namesGreeted.push(name);
-
-});
-
-app.get('/greeted/', function(req, res) {
-    console.log(namesGreeted)
-    res.send(namesGreeted);
-
-});
-app.get('/counter/:checkName', function(req, res) {
-
-    var checkName = req.params.checkName;
-    var occurences = {};
-    for (var index = 0; index < namesGreeted.length; index++) {
-        var value = namesGreeted[index];
-        occurences[value] = occurences[value] ? occurences[value] + 1 : 1;
-    }
-    console.log(occurences[checkName]);
-    res.sendStatus(checkName + " is greeted " + occurences[checkName] + " time(s)");
+app.get('/', function(req, res){
+    res.send('Welcome to the Greeting Web APP. This a simple Web Application using ExpressJS with a route that allows you to greet different people using a HTTP GET route.');
 })
 
+app.use(express.static('public'))
 
-var server = app.listen(3000, function() {
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
 
-    var host = server.address().address;
-    var port = server.address().port;
+// parse application/json
+app.use(bodyParser.json())
 
-    console.log('Greeting app listening at http://%s:%s', host, port);
+app.get('/greetings', nameRoutes.index);
+app.get('/greetings/greet', nameRoutes.greetScreen);
+app.post('/greetings/greet', nameRoutes.greet);
 
+
+const port = 3002;
+
+app.listen(port, function() {
+    console.log('App started on port: ' + port)
 });
