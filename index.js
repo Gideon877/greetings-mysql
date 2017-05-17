@@ -23,8 +23,8 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 app.get('/greetings', nameRoutes.index);
-app.get('/greetings/greet', nameRoutes.greetScreen);
-app.post('/greetings/greet', nameRoutes.greet);
+app.get('/greetings/index', nameRoutes.greetScreen);
+app.post('/greetings/index', nameRoutes.greet);
 
 
 const port = 3002;

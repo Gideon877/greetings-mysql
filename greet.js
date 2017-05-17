@@ -7,17 +7,16 @@ module.exports = function(){
     }
 
     const greetScreen = function(req, res){
-        res.render('greetings/greet'); //greetings folder
+        res.render('greetings/index'); //greetings folder
     }
 
     const greet = function(req, res){
-        // res.send('Add a name');
-        // var name = req.params.name;
-        //check if current name is already greeted
 
         var name = req.body.name;
+        console.log(name)
         // var language = req.body.language;
 
+        //check if current name is already greeted
 
         var foundName = nameList.find(function(currentName){
             return currentName === name;

@@ -1,11 +1,39 @@
+
 <head>
+    <title>Greeting | App</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<h1 align="center">Greetings</h1>
+
+<form action="/greetings/index" method="post" align="center">
+
+    <label for="name">Name:</label>
+    <input type="text" name="name" value="" id="user_input">
+    <input type="submit" value="Greet" class="greetBtn"> <br>
+    <hr>
+
+    <input type="radio" name="language" id="english" value="english">
+    <label for="english">English</label>
+
+    <input type="radio" name="language" id="setswana" value="setswana">
+    <label for="setswana">Setswana</label>
+
+    <input type="radio" name="language" id="zulu" value="zulu">
+    <label for="zulu">Zulu</label>
+    <hr>
+
+    {{#each greetings}}
+    <p>Hello, {{this}}</p>
+    {{/each}}
+</form>
+<!-- <div class="display" align="center"></div> -->
+
+
+<!-- <head>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
     <title>Home</title>
 </head>
 
 <h1>Greetings</h1>
 
-<a href="/greetings/greet">Greet someone</a>
-
-{{#each greetings}}
-    <p>Hello, {{this}}</p>
-{{/each}}
+<a href="/greetings/greet">Greet someone</a> -->
