@@ -1,38 +1,47 @@
-module.exports = function(){
+module.exports = function() {
 
     const nameList = [];
+    const index = function(req, res) {
+        var outputGreeting = "";
+        var userName = req.body.name;
+        var language = req.body.language;
 
-    const index = function(req, res){
-        res.render('greetings/index', {greetings: nameList});
-    }
+        if (userName) {
+            if (language) {
+                if (language == 'english') {
+                    outputGreeting = "Hello, " + userName + ".";
 
-    const greetScreen = function(req, res){
+                } else if (language == 'setswana') {
+                    outputGreeting = "Dumela, " + userName + ".";
+
+                } else if (language == 'zulu') {
+                    outputGreeting = "Sawubona, " + userName + ".";
+
+                }
+            } else {
+                outputGreeting = "Please select language"
+            }
+
+            var data = {
+                greeting: outputGreeting
+            };
+            res.render('greetings/index', data);
+        } else {
+            res.render('greetings/index');
+        };
+    };
+
+    const greetScreen = function(req, res) {
         res.render('greetings/index'); //greetings folder
     }
 
-    const greet = function(req, res){
-
-        var name = req.body.name;
-        console.log(name)
-        // var language = req.body.language;
-
-        //check if current name is already greeted
-
-        var foundName = nameList.find(function(currentName){
-            return currentName === name;
-        });
-
-        if (name && !foundName) {
-            nameList.push(name);
-        }
-
-
-        res.redirect('/greetings');
-    }
+    // const greet = function(req, res) {
+    //     nameList.push(name);
+    //     res.redirect('/greetings');
+    // }
 
     return {
         index,
-        greet,
         greetScreen
     }
 }

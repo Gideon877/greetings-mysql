@@ -24,7 +24,7 @@ app.use(bodyParser.json())
 
 app.get('/greetings', nameRoutes.index);
 app.get('/greetings/index', nameRoutes.greetScreen);
-app.post('/greetings/index', nameRoutes.greet);
+app.post('/greetings', nameRoutes.index);
 
 
 const port = 3002;

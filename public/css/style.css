@@ -10,8 +10,14 @@ body {
     color: blue;
     font-family: cursive;
 }
-
-.greetBtn {
+label {
+    width: 14%;
+    height: 5%;
+    font-size: inherit;
+    color: #56a21f;
+    font-family: cursive;
+}
+.greetBtn, .resetBtn {
     width: 14%;
     height: 5%;
     font-size: inherit;
