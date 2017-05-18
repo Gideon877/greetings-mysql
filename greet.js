@@ -1,13 +1,21 @@
 module.exports = function() {
 
-    const nameList = [];
+    const namesGreeted = [];
     const index = function(req, res) {
         var outputGreeting = "";
+
         var userName = req.body.name;
         var language = req.body.language;
 
         if (userName) {
             if (language) {
+                if (namesGreeted[userName] === undefined){
+                    namesGreeted[userName] = 1;
+                } else if (namesGreeted[userName] !== undefined) {
+                    namesGreeted[userName] += 1
+                }
+                var counts = userName + " have been greeted " + namesGreeted[userName]+ " time(s).";
+
                 if (language == 'english') {
                     outputGreeting = "Hello, " + userName + ".";
 
@@ -18,27 +26,28 @@ module.exports = function() {
                     outputGreeting = "Sawubona, " + userName + ".";
 
                 }
+
             } else {
-                outputGreeting = "Please select language"
+                req.flash("error", "Please select language");
             }
 
             var data = {
-                greeting: outputGreeting
+                greeting: outputGreeting,
+                counts
             };
+
             res.render('greetings/index', data);
-        } else {
+        }
+        else {
+            req.flash("error", "Name should not be blank");
             res.render('greetings/index');
         };
+
     };
 
     const greetScreen = function(req, res) {
         res.render('greetings/index'); //greetings folder
     }
-
-    // const greet = function(req, res) {
-    //     nameList.push(name);
-    //     res.redirect('/greetings');
-    // }
 
     return {
         index,

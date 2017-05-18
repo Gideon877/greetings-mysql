@@ -1,6 +1,8 @@
 const express = require('express');
 const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
+const flash = require('express-flash');
+const session = require('express-session');
 
 const NameRoutes = require('./greet');
 const nameRoutes = NameRoutes();
@@ -22,8 +24,11 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
 
-app.get('/greetings', nameRoutes.index);
+app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 * 30}}));
+app.use(flash()); // set up http session
+
 app.get('/greetings/index', nameRoutes.greetScreen);
+app.get('/greetings', nameRoutes.index);
 app.post('/greetings', nameRoutes.index);
 
 
