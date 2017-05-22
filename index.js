@@ -5,7 +5,9 @@ const flash = require('express-flash');
 const session = require('express-session');
 
 const NameRoutes = require('./greet');
-const nameRoutes = NameRoutes();
+const Models = require('./models');
+const models = Models('mongodb://localhost/greet-tests');
+const nameRoutes = NameRoutes(models);
 const app = express();
 
 

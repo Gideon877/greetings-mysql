@@ -35,7 +35,7 @@ h1 {
 /*p{
     text-transform: capitalize;
 }*/
-form {
+.form {
     width: 50%;
     border: 1px solid black;
     padding: 3%;
