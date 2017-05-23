@@ -3,7 +3,7 @@ const Models = require('../models');
 
 describe('modules should be able to', function() {
 
-    var models = Models('mongodb://localhost/greet-tests');
+    var models = Models('mongodb://gideon877:2343271a@ds064299.mlab.com:64299/greetingapp');
 
     beforeEach(function(done) {
         models.Name.remove({}, function(err){

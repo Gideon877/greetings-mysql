@@ -6,7 +6,7 @@ const session = require('express-session');
 
 const NameRoutes = require('./greet');
 const Models = require('./models');
-const models = Models('mongodb://localhost/greet-tests');
+const models = Models('mongodb://gideon877:2343271a@ds064299.mlab.com:64299/greetingapp');
 const nameRoutes = NameRoutes(models);
 const app = express();
 

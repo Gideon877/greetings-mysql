@@ -1,9 +1,9 @@
 module.exports = function(models) {
     const namesGreeted = [];
-
     const index = function(req, res, done) {
         var outputGreeting = "";
         var language = req.body.language;
+        var cForCounter = 1;
 
         var nameData = {
             name: req.body.name
@@ -11,13 +11,11 @@ module.exports = function(models) {
         if (!nameData || !nameData.name) {
             req.flash('error', 'Name should not be blank');
             res.render('greetings/index')
-        }
-        else {
+        } else {
             if (!language) {
                 req.flash("error", "Please select language");
                 res.render('greetings/index');
-            }
-            else {
+            } else {
                 models.Name.findOne({
                     name: req.body.name
                 }, function(err, theName) {
@@ -26,10 +24,28 @@ module.exports = function(models) {
                         return done(err)
                     }
 
+                    // models.Name.find({},  function(err,  result) { 
+                    //     if (err) {
+                    //         done(err)
+                    //     } 
+                    //     else  {
+                    //         cForCounter = result.length + 1;
+                    //         console.log(cForCounter + " cForCounter");
+                    //     }
+                    // });
+
 
                     if (theName) {
                         theName.greetCounter = theName.greetCounter + 1;
+
                         // outputGreeting = "Hello, " + theName.name + ". Greeted: " + theName.greetCounter;
+                        if (language == 'english') {
+                            outputGreeting = "Hello, " + theName.name;
+                        } else if (language == 'setswana') {
+                            outputGreeting = "Dumela, " + theName.name;
+                        } else if (language == 'zulu') {
+                            outputGreeting = "Sawubona, " + theName.name;
+                        }
 
                         theName
                             .save(function(err, result) {
@@ -58,10 +74,25 @@ module.exports = function(models) {
                                 if (err) {
                                     return done(err);
                                 }
+
+                                if (language == 'english') {
+                                    outputGreeting = "Hello, " + result.name;
+                                } else if (language == 'setswana') {
+                                    outputGreeting = "Dumela, " + result.name;
+                                } else if (language == 'zulu') {
+                                    outputGreeting = "Sawubona, " + result.name;
+                                }
+                                var data = {
+                                    greeting: outputGreeting
+                                };
+
+                                res.render('greetings/index', data);
+                                // res.render('greetings/index');
                             });
+
                         })
-                        res.render('greetings/index');
                     }
+
                 });
 
             }
@@ -79,44 +110,3 @@ module.exports = function(models) {
         greetScreen
     }
 };
-
-
-
-//
-// if (userName) {
-//     if (language) {
-//
-//         if (language == 'english') {
-//             outputGreeting = "Hello, " + userName + ".";
-//
-//         } else if (language == 'setswana') {
-//             outputGreeting = "Dumela, " + userName + ".";
-//
-//         } else if (language == 'zulu') {
-//             outputGreeting = "Sawubona, " + userName + ".";
-//
-//         }
-//
-//     }
-//
-//
-//
-//
-//
-//
-//
-//
-//     else {
-//         req.flash("error", "Please select language");
-//    }
-//
-//     var data = {
-//         greeting: outputGreeting
-//     };
-//
-//     res.render('greetings/index', data);
-// }
-// else {
-//     req.flash("error", "Name should not be blank");
-//     res.render('greetings/index');
-// };
