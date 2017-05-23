@@ -34,7 +34,7 @@ app.get('/greetings', nameRoutes.index);
 app.post('/greetings', nameRoutes.index);
 
 
-const port = 3002;
+const port = process.env.PORT || 3002;
 
 app.listen(port, function() {
     console.log('App started on port: ' + port)
