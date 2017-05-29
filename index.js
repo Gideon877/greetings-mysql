@@ -6,7 +6,7 @@ const session = require('express-session');
 
 const NameRoutes = require('./greet');
 const Models = require('./models');
-const models = Models('mongodb://gideon877:2343271a@ds064299.mlab.com:64299/greetingapp');
+const models = Models('mongodb://localhost/greet-tests');
 const nameRoutes = NameRoutes(models);
 const app = express();
 
@@ -34,7 +34,7 @@ app.get('/greetings', nameRoutes.index);
 app.post('/greetings', nameRoutes.index);
 
 
-const port = process.env.PORT || 3002;
+const port = 3002;
 
 app.listen(port, function() {
     console.log('App started on port: ' + port)

@@ -1,9 +1,9 @@
-// const assert = require('assert');
-// const Models = require('../models');
+const assert = require('assert');
+const Models = require('../models');
 
 describe('modules should be able to', function() {
 
-    var models = Models('mongodb://gideon877:2343271a@ds064299.mlab.com:64299/greetingapp');
+    var models = Models('mongodb://localhost/greet-tests');
 
     beforeEach(function(done) {
         models.Name.remove({}, function(err){
