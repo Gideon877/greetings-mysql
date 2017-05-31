@@ -10,7 +10,7 @@ const models = Models(process.env.MONGO_DB_URL || 'mongodb://greetings:greetings
 const nameRoutes = NameRoutes(models);
 const app = express();
 
-app.set("port", (process.env.MONGO_DB_URL || 3002))
+app.set("port", (process.env.PORT || 3002))
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
