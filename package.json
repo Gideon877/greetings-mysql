@@ -26,5 +26,8 @@
   "bugs": {
     "url": "https://github.com/Gideon877/greetings-webapp/issues"
   },
-  "homepage": "https://github.com/Gideon877/greetings-webapp#readme"
+  "homepage": "https://github.com/Gideon877/greetings-webapp#readme",
+  "engine": {
+      "node" : "v4.2.6"
+  }
 }
