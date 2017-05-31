@@ -10,6 +10,7 @@ const models = Models(process.env.MONGO_DB_URL || 'mongodb://greetings:greetings
 const nameRoutes = NameRoutes(models);
 const app = express();
 
+app.set("port", (process.env.PORT || 3002))
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
@@ -33,9 +34,8 @@ app.get('/greetings/index', nameRoutes.greetScreen);
 app.get('/greetings', nameRoutes.index);
 app.post('/greetings', nameRoutes.index);
 
+var port = app.get("port");
 
-const port = 3002;
-
-app.listen(process.env.PORT || port, function() {
+app.listen(port, function() {
     console.log('App started on port: ' + port)
 });
