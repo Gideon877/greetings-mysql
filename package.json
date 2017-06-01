@@ -12,6 +12,7 @@
     "body": "^5.1.0",
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
+    "express-flash": "0.0.2",
     "express-handlebars": "^3.0.0",
     "express-session": "^1.15.3",
     "mongoose": "^4.10.1"
@@ -28,6 +29,6 @@
   },
   "homepage": "https://github.com/Gideon877/greetings-webapp#readme",
   "engine": {
-      "node" : "v4.2.6"
+    "node": "v4.2.6"
   }
 }
