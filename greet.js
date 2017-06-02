@@ -3,7 +3,7 @@ module.exports = function(models) {
     const index = function(req, res, done) {
         var outputGreeting = "";
         var language = req.body.language;
-        var cForCounter = 1;
+        var counterMsg = "";
 
         var nameData = {
             name: req.body.name
@@ -24,21 +24,9 @@ module.exports = function(models) {
                         return done(err)
                     }
 
-                    // models.Name.find({},  function(err,  result) { 
-                    //     if (err) {
-                    //         done(err)
-                    //     } 
-                    //     else  {
-                    //         cForCounter = result.length + 1;
-                    //         console.log(cForCounter + " cForCounter");
-                    //     }
-                    // });
-
-
                     if (theName) {
                         theName.greetCounter = theName.greetCounter + 1;
 
-                        // outputGreeting = "Hello, " + theName.name + ". Greeted: " + theName.greetCounter;
                         if (language == 'english') {
                             outputGreeting = "Hello, " + theName.name;
                         } else if (language == 'setswana') {
@@ -53,11 +41,22 @@ module.exports = function(models) {
                                     return done(err)
                                 }
                             });
-                        var data = {
-                            greeting: outputGreeting
-                        };
 
-                        res.render('greetings/index', data);
+                        models.Name.find({},  function(err,  result) { 
+                            if (err) {
+                                done(err)
+                            } 
+                            var counterNmbr = result.length;
+                            // console.log("Counter: " + counterNmbr);
+
+                            counterMsg = "Names greeted for this session: " + result.length;
+                            var data = {
+                                greeting: outputGreeting,
+                                counts: counterMsg
+                            };
+
+                            res.render('greetings/index', data);
+                        });
                     }
 
                     if (!theName) {
@@ -82,12 +81,22 @@ module.exports = function(models) {
                                 } else if (language == 'zulu') {
                                     outputGreeting = "Sawubona, " + result.name;
                                 }
-                                var data = {
-                                    greeting: outputGreeting
-                                };
+                                models.Name.find({},  function(err,  result) { 
+                                    if (err) {
+                                        done(err)
+                                    } 
+                                    var counterNmbr = result.length;
+                                    console.log("Counter: " + counterNmbr);
 
-                                res.render('greetings/index', data);
-                                // res.render('greetings/index');
+                                    counterMsg = "Names greeted for this session: " + result.length;
+                                    var data = {
+                                        greeting: outputGreeting,
+                                        counts: counterMsg
+                                    };
+
+                                    res.render('greetings/index', data);
+                                });
+
                             });
 
                         })
@@ -97,7 +106,6 @@ module.exports = function(models) {
 
             }
 
-            //res.render('greetings/index');
         }
     }
 

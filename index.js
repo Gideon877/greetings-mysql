@@ -6,7 +6,7 @@ const session = require('express-session');
 
 const NameRoutes = require('./greet');
 const Models = require('./models');
-const models = Models(process.env.MONGO_DB_URL || 'mongodb://greetings:greetings@ds064299.mlab.com:64299/greetingapp');
+const models = Models(process.env.MONGO_DB_URL || 'mongodb://localhost/greetings');
 const nameRoutes = NameRoutes(models);
 const app = express();
 
