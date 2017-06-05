@@ -47,6 +47,7 @@ module.exports = function(models) {
                                 done(err)
                             } 
                             var counterNmbr = result.length;
+
                             // console.log("Counter: " + counterNmbr);
 
                             counterMsg = "Names greeted for this session: " + result.length;
@@ -57,7 +58,7 @@ module.exports = function(models) {
 
                             res.render('greetings/index', data);
                         });
-                    }
+                    };
 
                     if (!theName) {
                         models.Name.create({
@@ -81,40 +82,56 @@ module.exports = function(models) {
                                 } else if (language == 'zulu') {
                                     outputGreeting = "Sawubona, " + result.name;
                                 }
-                                models.Name.find({},  function(err,  result) { 
+                                models.Name.find({},  function(err,  result) {
                                     if (err) {
                                         done(err)
-                                    } 
+                                    };
                                     var counterNmbr = result.length;
-                                    console.log("Counter: " + counterNmbr);
 
                                     counterMsg = "Names greeted for this session: " + result.length;
                                     var data = {
                                         greeting: outputGreeting,
                                         counts: counterMsg
                                     };
-
                                     res.render('greetings/index', data);
                                 });
-
                             });
-
-                        })
-                    }
-
+                        });
+                    };
                 });
+            };
+        };
+    };
 
-            }
+    const greeted = function(req, res, done) {
 
-        }
-    }
+        models.Name.find({name: 'Thabang'},  function(err,  result) {
+            if (err) {
+                done(err)
+            } 
+            var output = result[0].name + " have been greeted " + result[0].greetCounter + ' time(s).';
+            // console.log(output);
+
+            var data_2 = {
+                views: output
+            };
+
+            res.render('greetings/index', data_2);
+        });
+    };
 
     const greetScreen = function(req, res) {
         res.render('greetings/index'); //greetings folder
-    }
+    };
 
+    const greetedNamesScreen = function(req, res) {
+        res.render('greetings/greet'); //greetings folder
+    };
+    // console.log(namesGreeted + " King");
     return {
         index,
-        greetScreen
-    }
+        greetScreen,
+        greetedNamesScreen,
+        greeted
+    };
 };

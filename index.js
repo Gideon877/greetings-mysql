@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const flash = require('express-flash');
 const session = require('express-session');
 
+
 const NameRoutes = require('./greet');
 const Models = require('./models');
 const models = Models(process.env.MONGO_DB_URL || 'mongodb://localhost/greetings');
@@ -31,6 +32,8 @@ app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 * 30}}));
 app.use(flash()); // set up http session
 
 app.get('/greetings/index', nameRoutes.greetScreen);
+app.get('/greetings/greet', nameRoutes.greetedNamesScreen);
+app.get('/greetings', nameRoutes.greeted);
 app.get('/greetings', nameRoutes.index);
 app.post('/greetings', nameRoutes.index);
 

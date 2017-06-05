@@ -2,6 +2,9 @@
     <title>Greeting | App</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <a href="/greetings">Home</a>
+    <a href="/greetings/greet">Greeted</a>
+    <a href="/greetings">Counter</a>
 </head>
 
 <h1 align="center">Greetings</h1>
@@ -51,8 +54,6 @@
             <li>{{name}}</li>
         {{/each}}
     </ul>
-
-    <!-- <form action="greetings" method="post" align="center">
-        <input type="submit" value="reset" class="resetBtn"> <br>
-    </form> -->
+    <p>{{views}}</p>
+<a href="/greetings/greet">View names greeted.</a>
 </div>
