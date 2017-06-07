@@ -16,10 +16,6 @@ app.set("port", (process.env.PORT || 3002))
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
-app.get('/', function(req, res){
-    res.send('Welcome to the Greeting Web APP. This a simple Web Application using ExpressJS with a route that allows you to greet different people using a HTTP GET route.');
-})
-
 app.use(express.static('public'))
 
 // parse application/x-www-form-urlencoded
@@ -31,11 +27,13 @@ app.use(bodyParser.json())
 app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 * 30}}));
 app.use(flash()); // set up http session
 
-app.get('/greetings/index', nameRoutes.greetScreen);
-app.get('/greetings/greet', nameRoutes.greetedNamesScreen);
-app.get('/greetings', nameRoutes.greeted);
-app.get('/greetings', nameRoutes.index);
-app.post('/greetings', nameRoutes.index);
+
+app.get('/', nameRoutes.index);
+app.get('/greeted', nameRoutes.greeted);
+app.get('/counter/:user_id', nameRoutes.counter);
+
+app.post('/', nameRoutes.index);
+
 
 var port = app.get("port");
 

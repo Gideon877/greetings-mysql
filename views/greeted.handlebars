@@ -1,0 +1,26 @@
+<head>
+    <title>Names Greeted</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Crimson+Text|El+Messiri|Inconsolata" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+</head>
+
+<body class="body_2">
+
+    <div class="header">
+        <h1 align="center">Names greeted</h1>
+        <a href="/">Home</a>
+        <hr>
+    </div>
+
+    <div class="names">
+
+        <ul>
+            {{#each namesGreeted}}
+                <li> <a href="/counter/{{this._id}}">{{this.name}}</a> </li><br>
+                {{else}}
+                    <li>Sorry, no names have been greeted. </li>
+            {{/each}}
+        </ul>
+    </div>
+</body>

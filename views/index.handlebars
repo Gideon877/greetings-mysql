@@ -1,0 +1,62 @@
+<head>
+    <title>Greeting | App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body class="body">
+
+
+
+    <h1 align="center">Greetings</h1>
+    <div class="form" align="center" >
+
+        <form action="/" method="post" align="center">
+
+            <label for="name">Name:</label>
+            <input type="text" name="name" value="" id="user_input">
+
+            <hr>
+
+            <input type="radio" name="language" id="english" value="english">
+            <label for="english">English</label>
+
+            <input type="radio" name="language" id="setswana" value="setswana">
+            <label for="setswana">Setswana</label>
+
+            <input type="radio" name="language" id="zulu" value="zulu">
+            <label for="zulu">Zulu</label>
+            <hr>
+            <input type="submit" value="Greet" class="greetBtn">
+        </form>
+
+
+        <p>{{greeting}}</p>
+        <p>{{counts}}</p>
+
+        {{#if messages.error}}
+            <div class="error">
+                {{messages.error}}
+                <br>
+                <br>
+            </div>
+        {{/if}}
+        {{#if messages.success}}
+            <div class="success">
+                {{message.success}}
+                <br>
+                <br>
+            </div>
+        {{/if}}
+
+        <ul>
+            {{#each names}}
+                <li>{{name}}</li>
+            {{/each}}
+        </ul>
+
+        <a href="/greeted">View names greeted.</a> <br>
+
+    </div>
+
+</body>

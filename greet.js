@@ -1,5 +1,5 @@
 module.exports = function(models) {
-    const namesGreeted = [];
+
     const index = function(req, res, done) {
         var outputGreeting = "";
         var language = req.body.language;
@@ -10,11 +10,11 @@ module.exports = function(models) {
         }
         if (!nameData || !nameData.name) {
             req.flash('error', 'Name should not be blank');
-            res.render('greetings/index')
+            res.render('index')
         } else {
             if (!language) {
                 req.flash("error", "Please select language");
-                res.render('greetings/index');
+                res.render('index');
             } else {
                 models.Name.findOne({
                     name: req.body.name
@@ -48,15 +48,13 @@ module.exports = function(models) {
                             } 
                             var counterNmbr = result.length;
 
-                            // console.log("Counter: " + counterNmbr);
-
                             counterMsg = "Names greeted for this session: " + result.length;
                             var data = {
                                 greeting: outputGreeting,
                                 counts: counterMsg
                             };
 
-                            res.render('greetings/index', data);
+                            res.render('index', data);
                         });
                     };
 
@@ -93,7 +91,7 @@ module.exports = function(models) {
                                         greeting: outputGreeting,
                                         counts: counterMsg
                                     };
-                                    res.render('greetings/index', data);
+                                    res.render('index', data);
                                 });
                             });
                         });
@@ -105,33 +103,44 @@ module.exports = function(models) {
 
     const greeted = function(req, res, done) {
 
-        models.Name.find({name: 'Thabang'},  function(err,  result) {
+        models.Name.find({},  function(err,  result) {
+
+            // console.log('in greeted');
+
+            if (err) {
+                return done(err);
+            }
+
+            var data_2 = {
+                namesGreeted: result
+            };
+            res.render('greeted', data_2);
+        });
+    };
+
+
+
+    const counter = function(req, res, done){
+        
+        var user_id = req.params.user_id;
+
+        models.Name.find({_id: user_id}, function(err, result){
+
             if (err) {
                 done(err)
             } 
             var output = result[0].name + " have been greeted " + result[0].greetCounter + ' time(s).';
-            // console.log(output);
 
-            var data_2 = {
-                views: output
-            };
-
-            res.render('greetings/index', data_2);
+            var data_3 = {
+                countMsg: output
+            }
+            res.render('counter', data_3);
         });
-    };
+    }
 
-    const greetScreen = function(req, res) {
-        res.render('greetings/index'); //greetings folder
-    };
-
-    const greetedNamesScreen = function(req, res) {
-        res.render('greetings/greet'); //greetings folder
-    };
-    // console.log(namesGreeted + " King");
     return {
         index,
-        greetScreen,
-        greetedNamesScreen,
-        greeted
+        greeted,
+        counter
     };
 };
