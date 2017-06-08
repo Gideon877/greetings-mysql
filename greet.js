@@ -105,8 +105,6 @@ module.exports = function(models) {
 
         models.Name.find({},  function(err,  result) {
 
-            // console.log('in greeted');
-
             if (err) {
                 return done(err);
             }
@@ -118,10 +116,8 @@ module.exports = function(models) {
         });
     };
 
-
-
     const counter = function(req, res, done){
-        
+
         var user_id = req.params.user_id;
 
         models.Name.find({_id: user_id}, function(err, result){
@@ -138,9 +134,21 @@ module.exports = function(models) {
         });
     }
 
+    const clearHistory = function (req, res, done){
+        models.Name.remove({}, function(err, result){
+            if (err) {
+                done(err)
+            }
+
+            res.render('index');
+
+        });
+    }
+
     return {
         index,
         greeted,
-        counter
+        counter,
+        clearHistory
     };
 };

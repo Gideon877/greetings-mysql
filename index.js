@@ -31,8 +31,10 @@ app.use(flash()); // set up http session
 app.get('/', nameRoutes.index);
 app.get('/greeted', nameRoutes.greeted);
 app.get('/counter/:user_id', nameRoutes.counter);
+app.get('/clear', nameRoutes.clearHistory);
 
 app.post('/', nameRoutes.index);
+app.post('/clear', nameRoutes.clearHistory);
 
 
 var port = app.get("port");

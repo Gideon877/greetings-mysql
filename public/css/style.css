@@ -33,7 +33,6 @@ footer {
     margin-top: 0;
     padding-top: 0;
     padding: 2em;
-    /*background-color: #f5d5be;;*/
     text-decoration: blink;
     text-shadow: 1px 1px 1px #cab624;
 }
@@ -50,6 +49,10 @@ a {
 .names {
     font-family: 'Inconsolata', monospace;
     font-size: 1.3em;
+    margin-left: 27em;
+}
+.home {
+    margin-left: 34em;
 }
 
 #user_input {
