@@ -19,7 +19,7 @@
                 <li class="active"><a href="/">Home</a></li>
                 <li><a href="/greeted">Greeted</a></li>
                 <li><a href="/clear">Clear</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="https://gideon877.github.io/portfolio/">Contact</a></li>
             </ul>
         </div>
     </nav>
@@ -61,42 +61,34 @@
 
         </form>
 
-        <div class="panel panel-default">
+        <!-- <div class="panel panel-default"> -->
 
-            <div class="panel-body">
-                <p>{{greeting}}</p>
+            <div class="alert alert-info">
+                 <strong>
+                     <p>{{greeting}}</p>
+                </strong>
                 <p>{{counts}}</p>
             </div>
+        <!-- </div> -->
 
-            <div class="container">
+        <!-- <div class="panel panel-default"> -->
+            {{#if messages.error}}
                 <div class="alert alert-danger">
+                    {{messages.error}}
+                    <br>
+                    <br>
+                </div>
 
-                {{#if messages.error}}
+            {{/if}}
 
-                    <!-- <div class="container"> -->
-                            <div class="error">
-                                {{messages.error}}
-                                <br>
-                                <br>
-                            </div>
-                        </div>
-                {{/if}}
+            {{#if messages.success}}
+                <div class="success">
+                    {{message.success}}
+                    <br>
+                    <br>
+                </div>
+            {{/if}}
 
-                {{#if messages.success}}
-                    <div class="success">
-                        {{message.success}}
-                        <br>
-                        <br>
-                    </div>
-                {{/if}}
-
-            </div>
-
-
-
-            </div>
-
-
-        </div>
-
+        <!-- </div> -->
+    </div>
 </body>
