@@ -1,26 +1,42 @@
 <head>
+
     <title>Names Greeted</title>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Crimson+Text|El+Messiri|Inconsolata" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
 <body class="body_2">
 
-    <div class="header">
-        <h1 align="center">Names greeted</h1>
-        <a class="home" href="/">Home</a>
-        <hr>
-    </div>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/"><img src="css/greeting-with-hat-md.png" alt="Greetings" style="height:33px;"></a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/">Home</a></li>
+                <li><a href="#">Clear</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
 
-    <div class="names">
+        </div>
+    </nav>
 
-        <ul>
+    <div class="container">
+        <div class="list-group">
             {{#each namesGreeted}}
-                <li> <a href="/counter/{{this._id}}">{{this.name}}</a> </li><br>
+                <a href="/counter/{{this._id}}" class="list-group-item">{{this.name}}</a>
                 {{else}}
-                    <li>Sorry, no names have been greeted. </li>
+                    <div class="well">
+                        <p class="text-danger">Sorry, no names have been greeted. </p>
+                    </div>
             {{/each}}
-        </ul>
+
+        </div>
     </div>
+
 </body>

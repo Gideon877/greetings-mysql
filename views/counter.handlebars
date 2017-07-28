@@ -1,24 +1,35 @@
 <head>
     <title>Name Counter</title>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Crimson+Text|El+Messiri|Inconsolata" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../css/style.css">
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
+
 <body class="body_3">
 
-<div class="header">
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/"><img src="../css/greeting-with-hat-md.png" alt="Greetings" style="height:33px;"></a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/">Home</a></li>
+                <li><a href="/greeted">Greeted</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
 
-    <h1 align="center">Name Counter</h1>
-
-    <a href="/">Home</a> <br>
-    <hr>
-    <a href="/greeted">Names</a>
-
-</div>
-
-<div class="counterMsg" align='center'>
-    <p class="p">{{countMsg}}</p>
-</div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="well">
+            <div class="counterMsg">
+                <p class="text-success">{{countMsg}}</p>
+            </div>
+        </div>
+    </div>
 
 </body>
