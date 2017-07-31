@@ -34,10 +34,14 @@
         </div>
 
         <form action="/" method="post">
+            <div class="row">
+                <div class="col-sm-3">
 
-            <div class="form-group">
-                <label for="name">Name:</label>
-                <input class="form-control" type="text" name="name" placeholder="Enter name">
+                    <div class="form-group">
+                        <label for="name"><b>Name:</b></label>
+                        <input class="form-control" type="text" name="name" placeholder="Enter name">
+                    </div>
+                </div>
             </div>
 
             <div class="form-inline">
@@ -63,31 +67,31 @@
 
         <!-- <div class="panel panel-default"> -->
 
-            <div class="alert alert-info">
-                 <strong>
+        <div class="alert alert-info">
+            <strong>
                      <p>{{greeting}}</p>
                 </strong>
-                <p>{{counts}}</p>
-            </div>
+            <p>{{counts}}</p>
+        </div>
         <!-- </div> -->
 
         <!-- <div class="panel panel-default"> -->
-            {{#if messages.error}}
-                <div class="alert alert-danger">
-                    {{messages.error}}
-                    <br>
-                    <br>
-                </div>
+        {{#if messages.error}}
+            <div class="alert alert-danger">
+                {{messages.error}}
+                <br>
+                <br>
+            </div>
 
-            {{/if}}
+        {{/if}}
 
-            {{#if messages.success}}
-                <div class="success">
-                    {{message.success}}
-                    <br>
-                    <br>
-                </div>
-            {{/if}}
+        {{#if messages.success}}
+            <div class="success">
+                {{message.success}}
+                <br>
+                <br>
+            </div>
+        {{/if}}
 
         <!-- </div> -->
     </div>
