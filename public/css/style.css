@@ -19,33 +19,6 @@
     background-image: url('puppy.jpg');
 }
 
-footer {
-    font-weight: bold;
-    margin: inherit;
-    padding: 1%;
-    background-color: rgba(96, 125, 139, 0.26);
-    text-decoration: blink;
-    text-shadow: 1px 1px 8px #796DF2;
-}
-
-.header {
-    font-weight: bold;
-    margin-top: 0;
-    padding-top: 0;
-    padding: 2em;
-    text-decoration: blink;
-    text-shadow: 1px 1px 1px #cab624;
-}
-
-a {
-    text-decoration: none;
-}
-
-.p {
-    font-family: 'Inconsolata', monospace;
-    font-size: 1.3em;
-}
-
 .names {
     font-family: 'Inconsolata', monospace;
     font-size: 1.3em;
@@ -55,24 +28,8 @@ a {
     margin-left: 34em;
 }
 
-#user_input {
-    width: 20%;
-    height: 5%;
-    font-size: inherit;
-    color: blue;
-    font-family: cursive;
-}
 
-
-.greetBtn, .resetBtn {
-    width: 14%;
-    height: 5%;
-    font-size: inherit;
-    color: #12125d;
-    font-family: cursive;
-}
-
-h1 {
+/*h1 {
     margin-top: 20;
 }
 .box {
@@ -81,7 +38,7 @@ h1 {
 
 #footer {
     color: blue;
-}
+}*/
 
 hr {
     clear: both;

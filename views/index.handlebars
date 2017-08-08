@@ -6,6 +6,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
 
 <body class="body">
@@ -26,7 +27,7 @@
 
     <div class="container">
 
-        <div class="panel panel-info">
+        <div class="panel panel-defaul">
 
             <div class="panel-heading">
                 <h5> This is a simple Web Application using ExpressJS with a route that allows you to greet different people using a HTTP GET route. It is in a web form that allows you to enter a name and when the Greet button is pressed display a greeting like this : Hello, 'THE NAME ENTERED'.</h5>
@@ -60,39 +61,44 @@
                     <input type="radio" name="language" id="zulu" value="zulu">Zulu</label>
                 </div>
 
-                <button type="submit" class="btn btn-info">Greet</button>
+                <button type="submit" class="btn btn-info btn-xs">Greet</button>
             </div>
 
         </form>
 
-        <!-- <div class="panel panel-default"> -->
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="alert alert-info">
+                    <strong>
+                        <p>{{greeting}}</p>
+                    </strong>
+                    <p>{{counts}}</p>
+                </div>
 
-        <div class="alert alert-info">
-            <strong>
-                     <p>{{greeting}}</p>
-                </strong>
-            <p>{{counts}}</p>
+            </div>
+
         </div>
-        <!-- </div> -->
 
-        <!-- <div class="panel panel-default"> -->
-        {{#if messages.error}}
-            <div class="alert alert-danger">
-                {{messages.error}}
-                <br>
-                <br>
+        <div class="row">
+            <div class="col-sm-3">
+
+                {{#if messages.error}}
+                    <div class="alert alert-danger">
+                        {{messages.error}}
+                        <br>
+                        <br>
+                    </div>
+
+                {{/if}}
+
+                {{#if messages.success}}
+                    <div class="success">
+                        {{message.success}}
+                        <br>
+                        <br>
+                    </div>
+                {{/if}}
             </div>
-
-        {{/if}}
-
-        {{#if messages.success}}
-            <div class="success">
-                {{message.success}}
-                <br>
-                <br>
-            </div>
-        {{/if}}
-
-        <!-- </div> -->
+        </div>
     </div>
 </body>
