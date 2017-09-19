@@ -5,6 +5,8 @@ module.exports = function(models) {
         var language = req.body.language;
         var counterMsg = "";
 
+
+
         var nameData = {
             name: req.body.name
         }
@@ -23,6 +25,15 @@ module.exports = function(models) {
                     if (err) {
                         return done(err)
                     }
+
+                    var otherName = req.body.name;
+                    var myName = otherName.toLowerCase();
+
+                    function capitalizeFirstLetter(string) {
+                        return string.charAt(0).toUpperCase() + string.slice(1);
+                    }
+                    var name = capitalizeFirstLetter(myName)
+                    console.log(name);
 
                     if (theName) {
                         theName.greetCounter = theName.greetCounter + 1;
@@ -59,15 +70,18 @@ module.exports = function(models) {
                     };
 
                     if (!theName) {
+
+
+
                         models.Name.create({
-                            name: req.body.name,
+                            name: name,
                             greetCounter: 1
                         }, function(err, result) {
                             if (err) {
                                 return done(err);
                             }
                             models.Name.find({
-                                name: req.body.name
+                                name: name
                             }, function(err, results) {
                                 if (err) {
                                     return done(err);
@@ -84,7 +98,6 @@ module.exports = function(models) {
                                     if (err) {
                                         done(err)
                                     };
-                                    var counterNmbr = result.length;
 
                                     counterMsg = "Names greeted for this session: " + result.length;
                                     var data = {
@@ -109,6 +122,8 @@ module.exports = function(models) {
                 return done(err);
             }
 
+            console.log('Greeted', result);
+
             var data_2 = {
                 namesGreeted: result
             };
@@ -116,16 +131,18 @@ module.exports = function(models) {
         });
     };
 
-    const counter = function(req, res, done){
+    const counter = function(req, res, done) {
 
         var user_id = req.params.user_id;
 
-        models.Name.find({_id: user_id}, function(err, result){
+        models.Name.findOne({
+            _id: user_id
+        }, function(err, result) {
 
             if (err) {
                 done(err)
             } 
-            var output = result[0].name + " have been greeted " + result[0].greetCounter + ' time(s).';
+            var output = result.name + " have been greeted " + result.greetCounter + ' time(s).';
 
             var data_3 = {
                 countMsg: output
@@ -134,8 +151,8 @@ module.exports = function(models) {
         });
     }
 
-    const clearHistory = function (req, res, done){
-        models.Name.remove({}, function(err, result){
+    const clearHistory = function(req, res, done) {
+        models.Name.remove({}, function(err, result) {
             if (err) {
                 done(err)
             }

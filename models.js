@@ -5,7 +5,7 @@ module.exports = function(mongoUrl){
 
     const Name = mongoose.model('Name', {
         name : String,
-        greetCounter : Number
+        greetCounter : Number,
     });
 
     return {
