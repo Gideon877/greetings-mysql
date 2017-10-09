@@ -30,7 +30,7 @@
     <div class="container">
         <div class="list-group">
             {{#each namesGreeted}}
-                <a href="/counter/{{this._id}}" class="list-group-item">{{this.name}}</a>
+                <a href="/counter/{{this.id}}" class="list-group-item">{{this.name}}</a>
                 {{else}}
                     <div class="well">
                         <p class="text-danger">Sorry, no names have been greeted. </p>

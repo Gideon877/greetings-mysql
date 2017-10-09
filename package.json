@@ -9,25 +9,18 @@
   "author": "Thabang G. Magaola",
   "license": "ISC",
   "dependencies": {
-    "body": "^5.1.0",
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
     "express-flash": "0.0.2",
     "express-handlebars": "^3.0.0",
-    "express-session": "^1.15.3",
-    "mongoose": "^4.10.1"
+    "express-myconnection": "^1.0.4",
+    "mysql": "^2.5.3",
+    "prompt": "^0.2.14"
   },
   "devDependencies": {
-    "nodemon": "^1.11.0"
+    "nodemon": "^1.11.0",
+    "typedoc": "^0.8.0"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Gideon877/greetings-webapp.git"
-  },
-  "bugs": {
-    "url": "https://github.com/Gideon877/greetings-webapp/issues"
-  },
-  "homepage": "https://github.com/Gideon877/greetings-webapp#readme",
   "engine": {
     "node": "v4.2.6"
   }
