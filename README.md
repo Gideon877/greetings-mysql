@@ -51,8 +51,7 @@ To install it on Ubuntu you can use the [apt-get package manager](https://nodejs
 Alternatively you can use nvm, the [Node Version Manager](https://github.com/creationix/nvm#install-script.md) to manage the version of NodeJS on your PC.
 
 #### Mysql
-    - MySQL is an open source database management software that helps users store, organize, and retrieve data. It is a very powerful program with a lot of flexibility—this tutorial will provide the simplest introduction to MySQL
-
+  
 How to [Install Mysql](https://www.digitalocean.com/community/tutorials/a-basic-mysql-tutorial) - only do Part 1.
 
 #### Package.json dependencies
