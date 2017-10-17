@@ -8,9 +8,8 @@ var express = require('express'),
     bodyParser = require('body-parser'),
     routes = require('./routes/greet');
 
-
 const app = express();
-
+//setup mysql database
 var dbOptions = {
       host: 'localhost',
       user: 'root',
@@ -20,10 +19,8 @@ var dbOptions = {
 };
 
 app.set("port", (process.env.PORT || 3002));
-
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
-
 app.use(express.static(__dirname + '/public'));
 
 //setup middleware
@@ -33,7 +30,6 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 // parse application/json
 app.use(bodyParser.json())
-
 app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 * 30}}));
 app.use(flash()); // set up http session
 
@@ -42,15 +38,12 @@ function errorHandler(err, req, res, next) {
   res.render('error', { error: err });
 }
 
-app.get('/', function(req, res) {
-    res.render('index');
-});
+app.get('/', function(req, res) {res.render('index');});
 app.get('/greeted', routes.greeted);
 app.get('/counter/:user_id', routes.counter);
 app.get('/clear', routes.clearHistory);
 
 app.post('/', routes.index);
-// app.post('/clear', routes.clearHistory);
 
 app.use(errorHandler);
 var port = process.env.GREET_PORT_NR || 3000;
