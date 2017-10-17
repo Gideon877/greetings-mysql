@@ -6,7 +6,7 @@ var express = require('express'),
     mysql = require('mysql'),
     myConnection = require('express-myconnection'),
     bodyParser = require('body-parser'),
-    routes = require('./greet');
+    routes = require('./routes/greet');
 
 
 const app = express();

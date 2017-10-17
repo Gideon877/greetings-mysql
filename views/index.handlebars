@@ -17,21 +17,16 @@
                 <a class="navbar-brand" href="/"><img src="css/greeting-with-hat-md.png" alt="Greetings" style="height:33px;"></a>
             </div>
             <ul class="nav navbar-nav">
-                <li class="active"><a href="/">Home</a></li>
-                <li><a href="/greeted">Greeted</a></li>
-                <li><a href="/clear">Clear</a></li>
-                <li><a href="https://gideon877.github.io/portfolio/">Contact</a></li>
+                <li><a href="/greeted" title="Display all greeted names.">Greeted</a></li>
+                <li><a href="/clear" title="Clear all greeted names in the database.">Clear</a></li>
             </ul>
         </div>
     </nav>
-
     <div class="container">
-
         <div class="jumbotron">
             <div class="panel panel-defaul">
-
                 <div class="panel-heading">
-                    <h5> This is a simple Web Application using ExpressJS with a route that allows you to greet different people using a HTTP GET route. It is in a web form that allows you to enter a name and when the Greet button is pressed display a greeting like this : Hello, 'THE NAME ENTERED'.</h5>
+                    <h5> This is a simple Web Application using <strong>ExpressJS</strong> and <strong>MySql</strong> database with routes that allows you to greet different people using a HTTP GET route. It is in a web form that allows you to enter a name and when the Greet button is pressed display a greeting like this : Hello, 'THE NAME ENTERED'.</h5>
                 </div>
             </div>
 
@@ -75,43 +70,28 @@
                         <div class="form-inline">
                             <div class="form-group">
                                 <label class="radio-inline">
-                                    <input type="radio" name="language"  value="Hello, " required>English</label>
-                                </div>
+                                <input type="radio" name="language"  value="Hello, " required>English</label>
+                            </div>
 
-                                <div class="form-group">
-                                    <label class="radio-inline">
-                                        <input type="radio" name="language" value="Dumela, " required>Setswana</label>
-                                    </div>
+                            <div class="form-group">
+                                <label class="radio-inline">
+                                <input type="radio" name="language" value="Dumela, " required>Setswana</label>
+                            </div>
 
-                                    <div class="form-group">
-                                        <label class="radio-inline">
-                                            <input type="radio" name="language" value="Sawubona, " required>Zulu</label>
-                                        </div>
-                                        <div class="form-group">
-                                            <!-- <label class="radio-inline">
-                                                <input type="radio" name="language" value="Sawubona, " required>Zulu</label> -->
-                                            </div>
-                                        <button type="submit" class="btn btn-info btn-sm">Greet</button>
-                                    </div>
+                            <div class="form-group">
+                                <label class="radio-inline">
+                                <input type="radio" name="language" value="Molo, " required>Xhosa</label>
+                            </div>
+                            <div class="form-group">
+                                <label class="radio-inline">
+                                <input type="radio" name="language" value="Sawubona, " required>Zulu</label>
+                            </div>
+                            <button type="submit" class="btn btn-info btn-xs">Greet</button>
+                        </div>
                     </div>
                 </div>
-
             </form>
             <br>
-            <!-- <div class="row">
-                <div class="col-sm-3"></div>
-                    <div class="col-sm-6">
-                    <div class="alert alert-info">
-                        <strong>
-                            <p class="text-info">{{greeting}}</p>
-                        </strong>
-                        <p>{{counts}}</p>
-                    </div>
-
-                </div>
-
-            </div> -->
         </div>
-
     </div>
 </body>

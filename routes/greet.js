@@ -6,11 +6,18 @@ exports.index = function(req, res, done) {
             // if (err) return done(err);
             var result = results[0];
             var language = input.language;
+            var myName = input.name.toLowerCase();
+
+
+            function capitalizeFirstLetter(string) {
+                return string.charAt(0).toUpperCase() + string.slice(1);
+            }
+            var name = capitalizeFirstLetter(myName);
 
             //Exist
             if (result) {
                 var new_count = result.count + 1;
-                var id = result.id
+                var id = result.id;
 
                 connection.query("UPDATE greetings set count=? WHERE id=?", [new_count, id],
                     function(err, rows) {
@@ -20,21 +27,19 @@ exports.index = function(req, res, done) {
                         connection.query('SELECT * from greetings',
                             function(err, Names) {
                                 var data = {
-                                    greeting: language + result.name,
+                                    greeting: language + name,
                                     counts: "Names greeted for this session: " + Names.length
                                 };
-
                                 res.render('index', data);
                             });
-
-                    });
+                        });
             }
             //No name in database
             if (!result) {
                 var newuser = {
-                    name: input.name,
+                    name: name,
                     count: 1
-                }
+                };
                 connection.query("INSERT INTO greetings set ? ", newuser,
                     function(err, rows) {
                         if (err)
@@ -43,7 +48,7 @@ exports.index = function(req, res, done) {
                         connection.query('SELECT * from greetings',
                             function(err, Names) {
                                 var data = {
-                                    greeting: language + input.name,
+                                    greeting: language + name,
                                     counts: "Names greeted for this session: " + Names.length
                                 };
 
@@ -60,7 +65,7 @@ exports.index = function(req, res, done) {
 exports.greeted = function(req, res, done) {
     req.getConnection(function(err, connection) {
         if (err) return done(err);
-        connection.query('SELECT * from greetings', [], function(err, results) {
+        connection.query('SELECT * from greetings ORDER BY name', [], function(err, results) {
             if (err) return done(err);
 
             var data_2 = {
