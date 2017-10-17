@@ -1,5 +1,4 @@
-# Greetings
-    - mysql
+# Greetings | MySql
 
 ### Task list
 
