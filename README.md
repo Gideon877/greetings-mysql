@@ -52,7 +52,7 @@ Alternatively you can use nvm, the [Node Version Manager](https://github.com/cre
 
 #### Mysql
   
-How to [Install Mysql](https://www.digitalocean.com/community/tutorials/a-basic-mysql-tutorial) - only do Part 1.
+How to [Install Mysql](https://www.digitalocean.com/community/tutorials/a-basic-mysql-tutorial).
 
 #### Package.json dependencies
 
